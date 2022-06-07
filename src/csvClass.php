@@ -4,26 +4,27 @@ use ITEC\PRESENCIAL\DAW\PROG\iArchivosConfig;
 use ITEC\PRESENCIAL\DAW\PROG\archivo;  
 include "vendor/autoload.php";
 class csv extends archivo implements iArchivosConfig {
-    private string $fileName;
-    private string $content;
-    private $value;
+    private array $content;
 
 
-    public function __construct(string $fileName, array $content, $value){
-        $this->fileName=$fileName;
+    public function __construct(string $fileName){
+        parent::__construct($fileName); //Hay que llamar al padre ya que es una extensión de archivo y siempre se pone al principio.
         $this->content=str_getcsv($this->contentStr);
     }
-    public function addValue(string $content, $value):bool{
-        return ($this->contentStr[$value]);
+
+    public function addValue($value):bool{
+        return ($this->content[$value]);
+    }
+
+    public function removeValue($value):bool{
+   
+    }
+
+    public function modifyValue($value):bool{
 
     }
-    public function removeValue(string $fileName):bool{
 
-    }
-    public function modifyValue(string $fileName, $value):bool{
-
-    }
-    public function readValue(string $fileName):bool{
+    public function readValue():bool{
 
     }
 }
