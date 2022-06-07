@@ -13,7 +13,6 @@ class csv extends archivo implements iArchivosConfig {
         $this->fileName=$fileName;
         $this->content=str_getcsv($this->contentStr);
     }
-
     public function addValue(string $content, $value):bool{
         return ($this->contentStr[$value]);
 
