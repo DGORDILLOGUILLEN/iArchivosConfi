@@ -1,0 +1,179 @@
+COMANDOS PHP TEST Y OTROS.
+
+Para lanzar el script de test tienes que dar permiso en powershell con el comando:
+	set-ExecutionPolicy -ExecutionPolicy Undefined -Scope LocalMachine
+	Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Para descargar y cargar phpunit (vendor): 
+	composer --dev require phpunit/phpunit 
+Para comprobar el test: 
+	.\vendor\bin\phpunit .\tests\personasTest.php
+Para lanzar el script para elaborar informes de los test:	
+	.\runTest.ps1 arraysTest
+
+EXTENSIONES:
+	Live Server=> Sirve para abrir el navegador y ejecutar lo que se esta desarrollando.
+	Live Share=> Para poder trabajar en el mismo archivo dentro del VSC. Se comparte el enlace de Git.
+	Bracket Pair Colorizer2=> Dar color para saber si nos saltamos algun signo de la sintaxis.
+	Auto-Header (Para el VSC).
+		Preferencia=>configuración=>extensiones=>Auto-Header=>settings.jon
+		Ahí pegamos la configuración que viene en el Auto-Header, cambiamos el nombre 
+		por el nuestro y cambiamos el formato de fecha.
+		Para usarlo pulsar (control+Alt+i)
+	Para que al señalar una función te salga lo comentado hay que instalar:
+		PHP Intelephense
+		PHP DocBlocker
+
+GITHUB (Para un proyecto)
+-Descargar git y pegamos en el PATH.
+-Crear carpeta con el nombre del proyecto. Y la abres con el VSC.
+-Instalar la extensión: Gitlens y GitHub pull
+-Nuevo repositorio => poner el nombre del repositorio => publico o privado (marcamos)
+	en nuestro caso no lo marcamos=> crear repositorio.
+		+Se copia el comando que nos da que es algo parecido a (Que lo haremos en los pasos siguientes): 
+			*git remote add origin https://github.com/DGORDILLOGUILLEN/claseExamenes.git
+-Cremos un archivo en el proyeto .gitignore y escribimos dentro el vendor y el composer.lock ya que estos no son necesarios.
+-Crear un proyecto en GitHub (en el terminal del VSC):
+	git init (Para iniciar la supervision de la carpeta mediante git)
+	git branch -m main
+-Para configurarlo:
+	git config --global user.email "dgordilloguillen@gmail.com" 
+	git config --global user.name "Daniel Gordillo" 
+	git remote add origin https://github.com/DGORDILLOGUILLEN/claseExamenes.git
+	(git-> llama a git, remote add->añadir remotamente, origin->puedes poner lo que quieras de nombre al servidor)
+		#git remote remove (nombre del servidor en este caso sería origin).
+	git push (origin) main
+    	git add .
+	git commit -m "Código inicial" -> Porque se ha comenzado el proyecto.
+	git push origin main
+
+Para guardar la información del proyecto en GitHub:
+	git add . ó git add src/ejemplo.php -> Para preparar la documentación 
+	git commit -m "Registrar lo que has conseguido"-> Para hacer el registro 
+	git push origin main -> Para guardar la información
+
+Para usar otra rama en GitHub:
+	git status -> Comprobar la rama de trabajo en la que estas.
+	git branch (nombre de la rama) -> Crear una rama en el repositorio.
+	git add (direccion del archivo). Ej: .\src\clases\profesor.php.
+	git commit -m "Descripcion del cambio que se ha hecho".
+	git push origin (nombre de la rama).
+	git checkout (nombre de la rama) -> Para cambiar a otra rama de trabajo.
+	+Para guardarlo en la rama principal:
+		git checkout main -> para irnos a la rama principal.
+		git merge (nombre de la rama que queremos traer) -> Para traer los cambios de la rama de trabajo secundaria.
+		git add .
+		git commit -m "Descripcion de lo que hemos hecho"
+		git push origin main.
+	git pull origin main -> Para descargar lo que llevemos en el repositorio.
+	
+Otros en GitHub
+	git log --oneline --graph(para la forma resumida) -> Para ver los commit 
+        	git log --since='5 minutes' (commit hechos desde hace 5 minutes)
+	git log --pretty=format:'%h %ad | %s%d [%an]' -> Para ver todos los commit con los codigos (de los commit)  
+        	Lo ideal es hacer un alias con este comando para usarse git hist
+	git checkout -codigoDelCommit -> Para volver a otro commit 
+	git checkout master -> Para volver a más reciente 
+	
+ACTUALIZAR COMPOSER
+Para ver si hay actualizaciones: 
+	composer update
+Para instalar actualizaciones: 
+	composer upgrade
+
+ESTRUCTURA COMPOSER
+-composer.json
+{
+    "require": {
+        "php":"^8"
+    },
+    "require-dev": {
+        "php":"^8",      
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ITEC\\PRESENCIAL\\DAW\\PROG\\": "src/" 
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ITEC\\PRESENCIAL\\DAW\\PROG\\": "src/" 
+        }
+    }
+}
+-settings.json
+{
+    "php.executablePath": "c:/php/php.exe",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass"
+            ]
+        }
+   },
+   "terminal.integrated.defaultProfile.windows": "PowerShell"
+    
+}
+
+-launch.json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Listen for Xdebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9001
+        }
+    ]
+}
+ESTRUCTURA TEST
+-TestCase and DataProvider
+use ITEC\Presencial\DAW\"nombreArchivo";
+use PHPUnit\Framework\TestCase;
+
+final class nombreArchivotest extends TestCase{
+    public function DPtestnombrefuncion*(){
+	    $VariableEsperada = [];
+	    $VariablePrueba1 = [];
+	    $VariablePrueba2 = [];
+	    return [
+		    "Prueba"=>[ValorEsperado, ValorIntroducido],
+            "Prueba1"=>[$VariableEsperada, $VariablePrueba1],
+		    "Prueba2"=>[$VariableEsperada, $VariablePrueba2]
+        ];
+    }
+    /**
+    * @dataProvider DPtestnombrefuncion*
+    */
+    public function testnombrefuncion* ($esperado, $variableIntroducida){
+        $this->assertEquals($esperado,/*direccionPagina+FuncionUtilizar*/($variableIntroducida/*necesita la funcion*/));
+    } 
+}
+EJEMPLO_TEST
+public function DPtestbubblesort(){
+            $numerosOrdenados=[1,2,3,4,5,6,7,8];
+            $numerosDesordenados1=[2,1,8,7,5,4,3,6];
+            $numerosDesordenados2=[8,7,6,5,4,3,2,1];
+            $numerosIncompletos=[8,6,5,4,3,2,1];
+
+            return [
+                "No es array"=>["a",null],
+                "Numeros Desordenados 1"=>[$numerosOrdenados, $numerosDesordenados1],
+                "Numeros Desordenados 2"=>[$numerosOrdenados, $numerosDesordenados2],
+                "Numeros Incompletos"=>[$numerosOrdenados, $numerosIncompletos]
+            ];
+        }
+        /**
+         * @dataProvider DPtestbubblesort
+         */
+        public function testbubblesort($esperado, $variable){
+        $this->assertEquals($esperado,PHPUnit\Framework\bubblesort\bubblesort($variable));
+        }
+
+
+
+
+
