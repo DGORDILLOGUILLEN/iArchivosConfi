@@ -16,8 +16,11 @@ class csv extends archivo implements iArchivosConfig {
         return ($this->content[$value]);
     }
 
-    public function removeValue($value):bool{
-   
+    public function removeValue($content):bool{
+        if(file_exists($this->content[$value])){ 
+            unlink($this->content[$value]); 
+        }
+        
     }
 
     public function modifyValue($value):bool{
@@ -25,7 +28,7 @@ class csv extends archivo implements iArchivosConfig {
     }
 
     public function readValue():bool{
-
+        return $this->content[$value];
     }
 }
 
