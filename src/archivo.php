@@ -1,6 +1,6 @@
 <?php
-namespace ITEC\PRESENCIAL\DAW\PROG\archivo; 
-use ITEC\PRESENCIAL\DAW\PROG\iArchivosConfig; 
+namespace ITEC\PRESENCIAL\DAW\PROG;  
+use ITEC\PRESENCIAL\DAW\PROG\iArchivoConfig; 
 include "vendor/autoload.php";
 
 class archivo {

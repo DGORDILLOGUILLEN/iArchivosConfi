@@ -1,5 +1,5 @@
 <?php
-namespace ITEC\PRESENCIAL\DAW\PROG\iArchivosConfig; 
+namespace ITEC\PRESENCIAL\DAW\PROG; 
 include "vendor/autoload.php";
 interface iArchivoConfig {
     public function addValue(string $name, $value):bool;

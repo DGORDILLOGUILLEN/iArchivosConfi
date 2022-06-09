@@ -1,6 +1,6 @@
 <?php
-namespace ITEC\PRESENCIAL\DAW\PROG\csvClass; 
-use ITEC\PRESENCIAL\DAW\PROG\iArchivosConfig;
+namespace ITEC\PRESENCIAL\DAW\PROG; 
+use ITEC\PRESENCIAL\DAW\PROG\iArchivoConfig; 
 use ITEC\PRESENCIAL\DAW\PROG\archivo;  
 include "vendor/autoload.php";
 class csv extends archivo implements iArchivosConfig {
