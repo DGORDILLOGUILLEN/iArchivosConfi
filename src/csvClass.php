@@ -17,11 +17,15 @@ class csv extends archivo implements iArchivosConfig {
     }
 
     public function removeValue($content):bool{
-
+        if (array_key_exists($value, $this->content)) { //Verifica si el índice o clave dada existe en el array
+            unset($this->content[$value]);//Destruye una o más variables especificadas.
+        }
     }
 
-    public function modifyValue($value):bool{
-
+    public function modifyValue(string $value, string $newOne):bool{
+        if (array_key_exists($value, $this->content)) { 
+            $this->content[$value] = $newOne;
+        }
     }
 
     public function readValue():bool{

@@ -8,7 +8,7 @@ class ini extends archivo implements iArchivosConfig {
 
 
     public function __construct(string $fileName){
-        parent::__construct($fileName); //Hay que llamar al padre ya que es una extensión de archivo y siempre se pone al principio.
+        parent::__construct($fileName); 
         $this->content=parse_ini_string($this->contentStr);
     }
 
@@ -17,11 +17,15 @@ class ini extends archivo implements iArchivosConfig {
     }
 
     public function removeValue($content):bool{
-
+        if (array_key_exists($value, $this->content)) {
+            unset($this->content[$value]);
+        }
     }
 
-    public function modifyValue($value):bool{
-
+    public function modifyValue(string $value, string $newOne):bool{
+        if (array_key_exists($value, $this->content)) {
+            $this->content[$value] = $newOne;
+        }
     }
 
     public function readValue():bool{

@@ -17,11 +17,15 @@ class json extends archivo implements iArchivosConfig {
     }
 
     public function removeValue($content):bool{
-
+        if (array_key_exists($value, $this->content)) {
+            unset($this->content[$value]);
+        }
     }
 
-    public function modifyValue($value):bool{
-
+    public function modifyValue(string $value, string $newOne):bool{
+        if (array_key_exists($value, $this->content)) { 
+            $this->content[$value] = $newOne;
+        }
     }
 
     public function readValue():bool{

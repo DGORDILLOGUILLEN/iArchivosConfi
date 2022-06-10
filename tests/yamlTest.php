@@ -1,16 +1,13 @@
 <?php
 namespace ITEC\PRESENCIAL\DAW\PROG\tests; 
-use ITEC\PRESENCIAL\DAW\PROG\json;
+use ITEC\PRESENCIAL\DAW\PROG\yaml; 
 
 use PHPUnit\Framework\TestCase;
 
-class jsonTest extends TestCase{
+class yamlTest extends TestCase{
 
 
 }
-
-
-
 
 
 ?>

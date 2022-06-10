@@ -1,8 +1,12 @@
 <?php
 namespace ITEC\PRESENCIAL\DAW\PROG\tests; 
-use ITEC\PRESENCIAL\DAW\PROG\iArchivoConfig; 
-use ITEC\PRESENCIAL\DAW\PROG\archivo;  
+use ITEC\PRESENCIAL\DAW\PROG\csv;  
+use PHPUnit\Framework\TestCase;
 
+class csvTest extends TestCase{
+
+
+}
 
 
 ?>
