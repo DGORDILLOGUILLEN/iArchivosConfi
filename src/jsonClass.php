@@ -12,7 +12,7 @@ class json extends archivo implements iArchivosConfig {
         $this->content=json_decode($this->contentStr);
     }
 
-    public function addValue($value):bool{
+    public function addValue(string $value):bool{
         return ($this->content[$value]);
     }
 
