@@ -1,7 +1,7 @@
 <?php
 namespace ITEC\PRESENCIAL\DAW\PROG;  
 use ITEC\PRESENCIAL\DAW\PROG\iArchivoConfig; 
-include "vendor/autoload.php";
+
 
 class archivo {
     private string $fileName;
@@ -10,6 +10,8 @@ class archivo {
      
     public function __construct(string $fileName){
         $this->fileName=$fileName;
+        if(!\file_exists( $this->fileName))
+            file_put_contents($this->fileName,"");
         $this->readFile();
     }
 
@@ -40,7 +42,10 @@ class archivo {
      * @param string $datos 
      * @return boolean
      */
-    public function saveFile(string $datos):bool{
+    public function saveFile(){
+        if(!file_exist($this->fileName))
+            throw new Exception("El archivo no existe");
+
         file_put_contents ($this->fileName, $datos); 
     }
 
@@ -56,6 +61,11 @@ class archivo {
         }
     }
 
+    public function openFile (string $fileName):archivo{
+        return new archivo($fileName);
+    }
+
+   
 }
 
 

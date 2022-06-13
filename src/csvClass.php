@@ -2,7 +2,7 @@
 namespace ITEC\PRESENCIAL\DAW\PROG; 
 use ITEC\PRESENCIAL\DAW\PROG\iArchivoConfig; 
 use ITEC\PRESENCIAL\DAW\PROG\archivo;  
-include "vendor/autoload.php";
+
 class csv extends archivo implements iArchivosConfig {
     private array $content;
     
@@ -64,6 +64,12 @@ class csv extends archivo implements iArchivosConfig {
 
 }
 
+
+
+
+
+
+?>
 
 
 
