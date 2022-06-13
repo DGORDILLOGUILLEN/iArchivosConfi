@@ -4,11 +4,13 @@ use ITEC\PRESENCIAL\DAW\PROG\iArchivoConfig;
 use ITEC\PRESENCIAL\DAW\PROG\archivo;  
 
 class csv extends archivo implements iArchivosConfig {
-    private array $content;
+    private array $parsed;
+    private string $content;
     
     public function __construct(string $fileName){
         parent::__construct($fileName); //Hay que llamar al padre ya que es una extensión de archivo y siempre se pone al principio.
-        $this->content=str_getcsv($this->contentStr);
+        $this->content=$this->getContent();
+        $this->parsed=str_getcsv($this->content);
     }
 
     /**
@@ -17,10 +19,11 @@ class csv extends archivo implements iArchivosConfig {
      * @param string $value
      * @return boolean
      */
-    public function addValue(string $value):bool{
-        return ($this->content[$value]);
+    public function addValue(string $name, $value):bool{
+        $this->parsed[$name]=$value;
+        $this->content=$this->array2csv($this->parsed);
+        $this->saveFile();
     }
-
 
     /**
      * removeValue function: esta función se utiliza para borrar el valor de un array.
@@ -33,9 +36,9 @@ class csv extends archivo implements iArchivosConfig {
      * @param array $content
      * @return boolean
      */
-    public function removeValue(array $content):bool{
-        if (array_key_exists($value, $this->content)) { 
-            unset($this->content[$value]);
+    public function removeValue(array $parsed):bool{
+        if (array_key_exists($value, $this->parsed)) { 
+            unset($this->parsed[$value]);
         }
     }
 
@@ -46,10 +49,8 @@ class csv extends archivo implements iArchivosConfig {
      * @param string $newOne
      * @return boolean
      */
-    public function modifyValue(string $value, string $newOne):bool{
-        if (array_key_exists($value, $this->content)) { 
-            $this->content[$value] = $newOne;
-        }
+    public function modifyValue(string $name, $value){
+        $this->addValue($name, $value);
     }
 
     /**
@@ -57,9 +58,19 @@ class csv extends archivo implements iArchivosConfig {
      *
      * @return boolean
      */
-    public function readValue():bool{
-        return $this->content[$value];
+    public function readValue(string $name):string{
+        return $this->parsed[$value];
     }
+
+    public function array2csv():string{
+        $out = '';
+        $i=0;
+        $keys=array_keys($this->parsed);
+        $csvheader=implode(";",$keys).PHP_EOL;
+        $csvvalues=implode(";",array_values($this->parsed)).PHP_EOL;
+        $out=$csvheader.$csvvalues;
+        return $out;
+    } 
 
 
 }
@@ -75,4 +86,3 @@ class csv extends archivo implements iArchivosConfig {
 
 
 
-?>

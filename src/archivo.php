@@ -5,12 +5,12 @@ use ITEC\PRESENCIAL\DAW\PROG\iArchivoConfig;
 
 class archivo {
     private string $fileName;
-    protected string $contentStr;
+    private string $content;
 
      
     public function __construct(string $fileName){
         $this->fileName=$fileName;
-        if(!\file_exists( $this->fileName))
+        if(!file_exists( $this->fileName))
             file_put_contents($this->fileName,"");
         $this->readFile();
     }
@@ -20,8 +20,8 @@ class archivo {
      *
      * @return void
      */
-    public function getContent(){//Devuelve el contenido
-        return $this->$contentStr;
+    public function getContent():string{//Devuelve el contenido
+        return $this->$content;
     }
     
     /**
@@ -30,7 +30,7 @@ class archivo {
      * @return void
      */
     public function readFile(){ 
-        $this->contentStr = file_get_contents($this->fileName);
+        $this->content = file_get_contents($this->fileName);
     }
 
     /**
@@ -45,10 +45,8 @@ class archivo {
     public function saveFile(){
         if(!file_exist($this->fileName))
             throw new Exception("El archivo no existe");
-
-        file_put_contents ($this->fileName, $datos); 
+        file_put_contents ($this->fileName, $content); 
     }
-
     /**
      * removeFile function: esta función se utiliza para borrar un archivo
      * file_exist(): es una función de PHP que verifica que un archivo en este caso existe
