@@ -37,9 +37,9 @@ class csv extends archivo implements iArchivosConfig {
      * @param array $parsed
      * @return boolean
      */
-    public function removeValue(array $parsed){
-        if (array_key_exists($value, $this->parsed)) { 
-            unset($this->parsed[$value]);
+    public function removeValue(string $name){
+        if (array_key_exists($name, $this->parsed)) { 
+            unset($this->parsed[$name]);
         }
     }
 

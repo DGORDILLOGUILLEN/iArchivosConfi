@@ -8,7 +8,7 @@ class ini extends archivo implements iArchivosConfig {
     private string $content;
 
 
-    public function __construct(){
+    public function __construct(string $fileName){
         parent_::__construc($fileName);
         $this->content=$this->getContent();
         $this->parsed=parse_ini_string($this->content);
@@ -21,9 +21,9 @@ class ini extends archivo implements iArchivosConfig {
         $this->saveFile();
     }
 
-    public function removeValue(array $parsed){
-        if (array_key_exists($value, $this->parsed)) { 
-            unset($this->parsed[$value]);
+    public function removeValue(string $name){
+        if (array_key_exists($name, $this->parsed)) { 
+            unset($this->parsed[$name]);
         }
     }
     public function modifyValue(string $name, $value){

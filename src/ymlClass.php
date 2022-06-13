@@ -10,7 +10,7 @@ class yml extends archivo implements iArchivosConfig {
     private string $content;
 
 
-    public function __construct(){
+    public function __construct(string $fileName){
         parent_::__construct($fileName);
         $this->content=$this->getContent();
         $this->parsed=Yaml::parse($this->content);
@@ -23,9 +23,9 @@ class yml extends archivo implements iArchivosConfig {
         $this->saveFile();
     }
 
-    public function removeValue(array $parsed){
-        if (array_key_exists($value, $this->parsed)) { 
-            unset($this->parsed[$value]);
+    public function removeValue(string $name){
+        if (array_key_exists($name, $this->parsed)) { 
+            unset($this->parsed[$name]);
         }
     }
 
