@@ -6,25 +6,29 @@ use PHPUnit\Framework\TestCase;
 
 class yamlTest extends TestCase{
     public function testYaml(){
-        $yaml = new yml();
-        $yaml->openFile("config.csv");
+      $yaml = new yml("tests/ejemplo.yml");
+      $yaml->openFile("test.yml");
     
-        $this->assertTrue($yaml->addValue("array", ["Juan",2,True]));
-        $this->assertFalse($yaml->addValue("booleano", True));
+        $this->assertNull($yaml->addValue("array", ["Juan",2,true]));
+        $this->assertFalse($yaml->addValue("booleano", False));
+        //Esta accediendo a elementos del array que no existen
         return $yaml;
     }
-    /*
-    * @depends testCreateValue
-    */
-   public function testModifyValue(yml $yaml){
-         $yaml->modifyValue("array", ["Jose",3,False]);
+    /**
+     * @depends testYaml
+     */
+
+   public function testModifyValue(){
+         $yaml->modifyValue("array", "Jose");
          $this->assertTrue($yaml->readValue("array"));
    }
    
    /*
     * @depends testModifyValue
     */
-   public function testRemoveValue(yml $yaml){
+   public function testRemoveValue(){
+      $yaml = new yml("tests/ejemplo.yml");
+      $yaml->openFile("test.yml");
          $yaml->removeValue("array");
          $this->assertNull($yaml->readValue("array"));
    }

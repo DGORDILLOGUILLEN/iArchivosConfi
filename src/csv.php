@@ -3,7 +3,7 @@ namespace ITEC\PRESENCIAL\DAW\PROG;
 use ITEC\PRESENCIAL\DAW\PROG\iArchivosConfig; 
 use ITEC\PRESENCIAL\DAW\PROG\archivo;  
 
-class csv extends archivo implements iArchivosConfig {
+class csvClass extends archivo implements iArchivosConfig {
     private array $parsed;
     private string $content;
     
@@ -74,9 +74,6 @@ class csv extends archivo implements iArchivosConfig {
         return $out;
     } 
 }
-
-
-
 
 
 

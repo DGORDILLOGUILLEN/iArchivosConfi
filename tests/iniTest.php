@@ -5,27 +5,26 @@ use ITEC\PRESENCIAL\DAW\PROG\ini;
 use PHPUnit\Framework\TestCase;
 
 class iniTest extends TestCase{
-    public function testini(){
-        $ini = new ini();
+    public function testAddValue(){
+        $ini = new ini("tests/ejemplo.ini");
         $ini->openFile("test.ini");
-    
-        $this->assertTrue($ini->addValue("numero", 123));
-        $this->assertFalse($ini->addValue("float", False));
+
+        $this->assertNull($ini->addValue("string", "Juan"));
+        $this->assertFalse($ini->addValue("booleano", True));
+
         return $ini;
     }
-    /*
-    * @depends testCreateValue
-    */
-   public function testModifyValue(ini $ini){
-         $ini->modifyValue("string", "Pepe");
+   public function testModifyValue(){
+      $ini = new ini("tests/ejemplo.ini");
+      $ini->openFile("test.ini");
+         $ini->modifyValue("string", "Juan");
          $this->assertTrue($ini->readValue("string"));
 
    }
-   
-   /*
-    * @depends testModifyValue
-    */
-   public function testRemoveValue(ini $ini){
+
+   public function testRemoveValue(){
+      $ini = new ini("tests/ejemplo.ini");
+      $ini->openFile("test.ini");
          $ini->removeValue("numero");
          $this->assertNull($ini->readValue("numero"));
    }

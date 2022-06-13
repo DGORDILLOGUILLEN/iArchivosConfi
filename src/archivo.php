@@ -53,7 +53,7 @@ class archivo {
      * @param string $fileName 
      */
     public function saveFile(){
-        if(!file_exist($this->fileName))
+        if(!file_exists($this->fileName))
             throw new Exception("El archivo no existe");
         file_put_contents ($this->fileName, $this->content); 
     }
