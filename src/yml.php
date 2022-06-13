@@ -11,7 +11,7 @@ class yml extends archivo implements iArchivosConfig {
 
 
     public function __construct(string $fileName){
-        parent_::__construct($fileName);
+        parent::__construct($fileName);
         $this->content=$this->getContent();
         $this->parsed=Yaml::parse($this->content);
         
@@ -30,7 +30,7 @@ class yml extends archivo implements iArchivosConfig {
     }
 
     public function modifyValue(string $name, $value){
-        $rhis->addValue($name, $value);
+        $this->addValue($name, $value);
     }
 
     public function readValue(string $name):string{
