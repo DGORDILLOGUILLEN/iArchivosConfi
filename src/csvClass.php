@@ -59,7 +59,7 @@ class csv extends archivo implements iArchivosConfig {
      * @return boolean
      */
     public function readValue(string $name):string{
-        return $this->parsed[$value];
+        return $name==" "?" ":$this->parsed[$value];
     }
 
     public function array2csv():string{
@@ -71,8 +71,6 @@ class csv extends archivo implements iArchivosConfig {
         $out=$csvheader.$csvvalues;
         return $out;
     } 
-
-
 }
 
 
