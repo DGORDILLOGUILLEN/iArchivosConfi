@@ -5,7 +5,7 @@ use ITEC\PRESENCIAL\DAW\PROG\iArchivoConfig;
 
 class archivo {
     private string $fileName;
-    private string $content;
+    private string $content; 
 
     
     /**
@@ -50,24 +50,25 @@ class archivo {
      * file_put_contents():es una función de PHP que se utiliza para escribir los datos en un fichero.
      * Para que la función pueda escribir los datos hay que darselos en string.
      *
-     * @param string $datos 
-     * @return boolean
+     * @param string $fileName 
      */
     public function saveFile(){
         if(!file_exist($this->fileName))
             throw new Exception("El archivo no existe");
-        file_put_contents ($this->fileName, $content); 
+        file_put_contents ($this->fileName, $this->$content); 
     }
     /**
      * removeFile function: esta función se utiliza para borrar un archivo
      * 
-     * file_exists(): es una función de PHP que verifica que un archivo en este caso existe
+     * file_exists(): es una función de PHP que verifica que un archivo en este caso existe.
+     * 
+     * unlink():Borra un fichero.
      *
      * @return boolean
      */
     public function removeFile():bool{
-        if(file_exists($this->fileName)){ //Comprueba si existe
-            unlink($this->fileName); //Borra un fichero
+        if(file_exists($this->fileName)){ 
+            unlink($this->fileName); 
         }
     }
 
@@ -81,7 +82,6 @@ class archivo {
         return new archivo($fileName);
     }
 
-   
 }
 
 

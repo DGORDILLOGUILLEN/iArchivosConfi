@@ -10,16 +10,17 @@ class csv extends archivo implements iArchivosConfig {
     public function __construct(string $fileName){
         parent::__construct($fileName); //Hay que llamar al padre ya que es una extensión de archivo y siempre se pone al principio.
         $this->content=$this->getContent();
-        $this->parsed=str_getcsv($this->content);
+        $this->parsed=str_getcsv($this->content, ";");
     }
 
     /**
      * addValue function: se utiliza para añadir un valor al array content.
+     * Y se guarda con saveFile().
      *
      * @param string $value
      * @return boolean
      */
-    public function addValue(string $name, $value):bool{
+    public function addValue(string $name, $value){
         $this->parsed[$name]=$value;
         $this->content=$this->array2csv($this->parsed);
         $this->saveFile();
@@ -33,10 +34,10 @@ class csv extends archivo implements iArchivosConfig {
      * 
      * unset(): destruye una o más variables especificadas.
      *
-     * @param array $content
+     * @param array $parsed
      * @return boolean
      */
-    public function removeValue(array $parsed):bool{
+    public function removeValue(array $parsed){
         if (array_key_exists($value, $this->parsed)) { 
             unset($this->parsed[$value]);
         }
@@ -45,8 +46,8 @@ class csv extends archivo implements iArchivosConfig {
     /**
      * modifyValue function: Se utilizará para modificar el valor de un array
      *
+     * @param string $name
      * @param string $value
-     * @param string $newOne
      * @return boolean
      */
     public function modifyValue(string $name, $value){
@@ -55,6 +56,9 @@ class csv extends archivo implements iArchivosConfig {
 
     /**
      * readValue function: esta función se utiliza para leer el array.
+     * 
+     * Las dobles comillas es para indicar que es un string vacio.
+     * ?: "operador ternario", quiere decir que si esta vacio que te lo de vacio y si no que lo de parseado.
      *
      * @return boolean
      */
@@ -63,12 +67,10 @@ class csv extends archivo implements iArchivosConfig {
     }
 
     public function array2csv():string{
-        $out = '';
-        $i=0;
-        $keys=array_keys($this->parsed);
-        $csvheader=implode(";",$keys).PHP_EOL;
-        $csvvalues=implode(";",array_values($this->parsed)).PHP_EOL;
-        $out=$csvheader.$csvvalues;
+        $keys = array_keys($this->parsed);
+        $csvheader = implode(";", array_keys($this->parsed)).PHP_EOL;
+        $csvvalues = implode(";",array_values($this->parsed)).PHP_EOL;
+        $out = $csvheader.$csvvalues;
         return $out;
     } 
 }

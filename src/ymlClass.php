@@ -17,13 +17,13 @@ class yml extends archivo implements iArchivosConfig {
         
     }
 
-    public function addValue(){
+    public function addValue(string $name, $value){
         $this->parsed[$name]=$value;
         $this->content=Yaml::dump($this->parsed);
         $this->saveFile();
     }
 
-    public function removeValue(string $name){
+    public function removeValue(array $parsed){
         if (array_key_exists($value, $this->parsed)) { 
             unset($this->parsed[$value]);
         }

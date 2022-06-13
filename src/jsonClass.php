@@ -25,12 +25,13 @@ class json extends archivo implements iArchivosConfig {
     /**
      * addValue function: se utiliza para añadir un valor al array content.
      *
-     * @param string $value
+     * @param string $name
+     * @param $value
      * @return boolean
      */
-    public function addValue(string $name, $value):bool{
+    public function addValue(string $name, $value) {
         $this->parsed[$name]=$value;
-        $this->content=$this->array2json($this->parsed);
+        $this->content=json_encode($this->parsed);
         $this->saveFile();
     }
 
@@ -42,10 +43,10 @@ class json extends archivo implements iArchivosConfig {
      * 
      * unset(): destruye una o más variables especificadas.
      *
-     * @param array $content
+     * @param array $parsed
      * @return boolean
      */
-    public function removeValue(array $parsed):bool{
+    public function removeValue(array $parsed){
         if (array_key_exists($value, $this->parsed)) { 
             unset($this->parsed[$value]);
         }
@@ -74,7 +75,4 @@ class json extends archivo implements iArchivosConfig {
         return $name==" "?" ":$this->parsed[$value];
     }
   
-    public function array2json():string{
-        return json_encode($this->parsed);
-    } 
 }
