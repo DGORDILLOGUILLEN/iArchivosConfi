@@ -1,6 +1,6 @@
 <?php
 namespace ITEC\PRESENCIAL\DAW\PROG; 
-use ITEC\PRESENCIAL\DAW\PROG\iArchivoConfig; 
+use ITEC\PRESENCIAL\DAW\PROG\iArchivosConfig; 
 use ITEC\PRESENCIAL\DAW\PROG\archivo;  
 
 class csv extends archivo implements iArchivosConfig {

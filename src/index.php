@@ -1,11 +1,12 @@
 <?php
+namespace ITEC\PRESENCIAL\DAW\PROG;
+use ITEC\PRESENCIAL\DAW\PROG\archivo;
 use ITEC\PRESENCIAL\DAW\PROG\ini;
 use ITEC\PRESENCIAL\DAW\PROG\json;
 use ITEC\PRESENCIAL\DAW\PROG\yml;
-use ITEC\PRESENCIAL\DAW\PROG\csv;  
-use ITEC\PRESENCIAL\DAW\archivo;  
-use ITEC\PRESENCIAL\DAW\PROG\iArchivoConfig; 
-include "vendor/autoload.php";
+use ITEC\PRESENCIAL\DAW\PROG\csv;
+
+
 
 $ini= new ini ("index.ini");
 $json= new json ("index.json");
