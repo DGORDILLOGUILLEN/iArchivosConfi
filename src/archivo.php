@@ -30,7 +30,7 @@ class archivo {
      * @return string
      */
     public function getContent():string{
-        return $this->$content;
+        return $this->content;
     }
     
     /**
@@ -55,7 +55,7 @@ class archivo {
     public function saveFile(){
         if(!file_exist($this->fileName))
             throw new Exception("El archivo no existe");
-        file_put_contents ($this->fileName, $this->$content); 
+        file_put_contents ($this->fileName, $this->content); 
     }
     /**
      * removeFile function: esta función se utiliza para borrar un archivo
@@ -68,7 +68,7 @@ class archivo {
      */
     public function removeFile():bool{
         if(file_exists($this->fileName)){ 
-            unlink($this->fileName); 
+            return unlink($this->fileName); 
         }
     }
 

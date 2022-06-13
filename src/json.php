@@ -46,7 +46,7 @@ class json extends archivo implements iArchivosConfig {
      * @param array $parsed
      * @return boolean
      */
-    public function removeValue(string $name){
+    public function removeValue(string $name, $value){
         if (array_key_exists($name, $this->parsed)) { 
             unset($this->parsed[$value]);
         }

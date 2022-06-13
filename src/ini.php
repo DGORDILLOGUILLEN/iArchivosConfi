@@ -28,8 +28,8 @@ class ini extends archivo implements iArchivosConfig {
             unset($this->parsed[$name]);
         }
     }
-    public function modifyValue(string $name, $value){
-        $rhis->addValue($name, $value);
+    public function modifyValue(string $name){
+        $this->addValue($name, $value);
     }
 
     public function readValue(string $name):string{
