@@ -6,27 +6,28 @@ use PHPUnit\Framework\TestCase;
 
 class iniTest extends TestCase{
     public function testini(){
-        $ini = new yml();
-        $ini->openFile("config.csv");
+        $ini = new ini();
+        $ini->openFile("test.ini");
     
-        $this->assertTrue($ini->addValue("array", ["Juan",2,True]));
-        $this->assertFalse($ini->addValue("booleano", True));
+        $this->assertTrue($ini->addValue("numero", 123));
+        $this->assertFalse($ini->addValue("float", False));
         return $ini;
     }
     /*
     * @depends testCreateValue
     */
    public function testModifyValue(ini $ini){
-         $ini->modifyValue("array", ["Jose",3,False]);
-         $this->assertTrue($ini->readValue("array"));
+         $ini->modifyValue("string", "Pepe");
+         $this->assertTrue($ini->readValue("string"));
+
    }
    
    /*
     * @depends testModifyValue
     */
-   public function testRemoveValue(yml $ini){
-         $ini->removeValue("array");
-         $this->assertNull($ini->readValue("array"));
+   public function testRemoveValue(ini $ini){
+         $ini->removeValue("numero");
+         $this->assertNull($ini->readValue("numero"));
    }
 
 
