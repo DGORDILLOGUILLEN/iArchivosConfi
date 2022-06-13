@@ -1,9 +1,6 @@
-6 lines (6 sloc)  58 Bytes
-
-
 array:
-    - 1
+    - "Juan"
     - 2
-    - 3
-numero: 123
-booleano: true
+    - True
+numero: 240
+booleano: False
