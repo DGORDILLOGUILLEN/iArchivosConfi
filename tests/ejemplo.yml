@@ -1,0 +1,9 @@
+6 lines (6 sloc)  58 Bytes
+
+
+array:
+    - 1
+    - 2
+    - 3
+numero: 123
+booleano: true

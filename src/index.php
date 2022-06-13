@@ -5,7 +5,7 @@ use ITEC\PRESENCIAL\DAW\PROG\ini;
 use ITEC\PRESENCIAL\DAW\PROG\json;
 use ITEC\PRESENCIAL\DAW\PROG\yml;
 use ITEC\PRESENCIAL\DAW\PROG\csv;
-
+include "vendor/autoload.php";
 
 
 $ini= new ini ("index.ini");

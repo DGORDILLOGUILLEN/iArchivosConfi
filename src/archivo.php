@@ -29,7 +29,7 @@ class archivo {
      *
      * @return string
      */
-    public function getContent():string{//Devuelve el contenido
+    public function getContent():string{
         return $this->$content;
     }
     

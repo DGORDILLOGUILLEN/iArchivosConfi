@@ -11,7 +11,7 @@ class ini extends archivo implements iArchivosConfig {
 
 
     public function __construct(string $fileName){
-        parent_::__construc($fileName);
+        parent::__construct($fileName);
         $this->content=$this->getContent();
         $this->parsed=parse_ini_string($this->content);
         
