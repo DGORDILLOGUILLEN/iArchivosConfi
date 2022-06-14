@@ -33,8 +33,6 @@
          $this->assertNull($ini->readValue("numero"));
      }
    
-
-
    }
 
 ?>
