@@ -3,6 +3,7 @@ namespace ITEC\PRESENCIAL\DAW\PROG;
 use ITEC\PRESENCIAL\DAW\PROG\iArchivosConfig; 
 use ITEC\PRESENCIAL\DAW\PROG\archivo;  
 
+
 class json extends archivo implements iArchivosConfig {
     private array $parsed;
     private string $content;

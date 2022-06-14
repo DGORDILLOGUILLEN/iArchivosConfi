@@ -2,8 +2,9 @@
 namespace ITEC\PRESENCIAL\DAW\PROG; 
 use ITEC\PRESENCIAL\DAW\PROG\iArchivosConfig; 
 use ITEC\PRESENCIAL\DAW\PROG\archivo;  
-
 use Symfony\Component\Yaml\Yaml;
+
+
 
 class yml extends archivo implements iArchivosConfig {
     private array|null $parsed;

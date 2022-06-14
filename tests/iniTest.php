@@ -1,8 +1,8 @@
 <?php
    namespace ITEC\PRESENCIAL\DAW\PROG\tests;
    use ITEC\PRESENCIAL\DAW\PROG\ini;  
-
    use PHPUnit\Framework\TestCase;
+   include_once "./vendor/autoload.php";
 
    class iniTest extends TestCase{
       public function testIni(){
@@ -15,15 +15,15 @@
          //Esta accediendo a elementos del array que no existen
          return $ini;
      }
-     /*
-     * @depends testini
+     /**
+     * @depends testIni
      */
      public function testModifyValue(){
          $ini = new ini("tests/ejemplo.ini");
          $ini->modifyValue("booleano", false);
          $this->assertEquals(false, $ini->readValue("booleano"));
      }
-     /*
+     /**
      * @depends testModifyValue
      */
      public function testRemoveValue(){

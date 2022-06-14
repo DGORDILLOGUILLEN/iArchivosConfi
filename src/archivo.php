@@ -3,6 +3,7 @@ namespace ITEC\PRESENCIAL\DAW\PROG;
 use ITEC\PRESENCIAL\DAW\PROG\iArchivosConfig; 
 
 
+
 class archivo {
     private string $fileName;
     private string $content; 

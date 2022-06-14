@@ -1,5 +1,6 @@
 <?php
-namespace ITEC\PRESENCIAL\DAW\PROG; 
+namespace ITEC\PRESENCIAL\DAW\PROG;
+
 
 interface iArchivosConfig {
     public function addValue(string $name, $value);

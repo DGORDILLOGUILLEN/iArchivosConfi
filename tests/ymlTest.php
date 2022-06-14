@@ -1,8 +1,8 @@
 <?php
-namespace ITEC\PRESENCIAL\DAW\PROG\tests; 
-use ITEC\PRESENCIAL\DAW\PROG\yml; 
-
-use PHPUnit\Framework\TestCase;
+  namespace ITEC\PRESENCIAL\DAW\PROG\tests; 
+  use ITEC\PRESENCIAL\DAW\PROG\yml; 
+  use PHPUnit\Framework\TestCase;
+  include_once "./vendor/autoload.php";
 
   class ymlTest extends TestCase{
     public function testYml(){
@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
       //Esta accediendo a elementos del array que no existen
       return $yaml;
     }
-    /**
+    /** 
     * @depends testYml
     */
     public function testModifyValue(){
@@ -23,7 +23,7 @@ use PHPUnit\Framework\TestCase;
       $yaml->modifyValue("array", "Jose");
       $this->assertEquals("Jose",$yaml->readValue("array"));
     }
-    /*
+    /** 
     * @depends testModifyValue
     */
     public function testRemoveValue(){

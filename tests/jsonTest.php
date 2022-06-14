@@ -1,8 +1,8 @@
 <?php
 namespace ITEC\PRESENCIAL\DAW\PROG\tests; 
 use ITEC\PRESENCIAL\DAW\PROG\json;
-
 use PHPUnit\Framework\TestCase;
+include_once "./vendor/autoload.php";
 
 class jsonTest extends TestCase{
 
@@ -16,15 +16,15 @@ class jsonTest extends TestCase{
         //Esta accediendo a elementos del array que no existen
         return $json;
     }
-    /*
-    * @depends testjson
+    /** 
+    * @depends testJson
     */
     public function testModifyValue(){
         $json = new json("tests/ejemplo.json");
         $json->modifyValue("array", "Jose");
         $this->assertEquals("Jose",$json->readValue("array"));
     }
-    /*
+    /** 
     * @depends testModifyValue
     */
     public function testRemoveValue(){

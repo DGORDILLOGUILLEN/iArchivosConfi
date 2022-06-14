@@ -2,8 +2,7 @@
 namespace ITEC\PRESENCIAL\DAW\PROG; 
 use ITEC\PRESENCIAL\DAW\PROG\iArchivosConfig; 
 use ITEC\PRESENCIAL\DAW\PROG\archivo;
-require "iArchivosConfig.php";  
-require "archivo.php";
+
 
 class ini extends archivo implements iArchivosConfig {
     private array|null $parsed;

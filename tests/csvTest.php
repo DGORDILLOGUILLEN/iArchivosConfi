@@ -2,6 +2,7 @@
 namespace ITEC\PRESENCIAL\DAW\PROG\tests; 
 use ITEC\PRESENCIAL\DAW\PROG\csv;  
 use PHPUnit\Framework\TestCase;
+include_once "./vendor/autoload.php";
 
 class csvTest extends TestCase{
     public function testCsv(){
@@ -14,8 +15,8 @@ class csvTest extends TestCase{
         //Esta accediendo a elementos del array que no existen
         return $csv;
     }
-    /*
-    * @depends testcsv
+    /**
+    * @depends testCsv
     */
     public function testModifyValue(){
         $csv = new csv("tests/ejemplo.csv");
@@ -23,7 +24,7 @@ class csvTest extends TestCase{
         $this->assertEquals(false, $csv->readValue("booleano"));
         $this->assertNotEquals(true, $csv->readValue("booleano"));
     }
-    /*
+    /**
     * @depends testModifyValue
     */
     public function testRemoveValue(){
