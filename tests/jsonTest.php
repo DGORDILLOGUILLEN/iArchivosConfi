@@ -13,7 +13,6 @@ class jsonTest extends TestCase{
         $this->assertEquals(["Jose","Juan","Daniel"], $json->readValue("array"));
         $this->assertEquals(24, $json->readValue("numero"));
         $this->assertEquals(false, $json->readValue("booleano"));
-        //Esta accediendo a elementos del array que no existen
         return $json;
     }
     /** 

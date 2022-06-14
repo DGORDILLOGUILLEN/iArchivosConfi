@@ -12,7 +12,6 @@ class csvTest extends TestCase{
         $this->assertNotEquals(1234,$csv->readValue("numero"));
         $this->assertEquals("true", $csv->readValue("booleano"));
         $this->assertEquals("Ignacio", $csv->readValue("programacion"));
-        //Esta accediendo a elementos del array que no existen
         return $csv;
     }
     /**

@@ -12,7 +12,6 @@
       $this->assertNull($yaml->addValue("array", ["Juan",2,true]));
       $this->assertNull($yaml->addValue("numero", 300));
       $this->assertNull($yaml->addValue("booleano", false));
-      //Esta accediendo a elementos del array que no existen
       return $yaml;
     }
     /** 

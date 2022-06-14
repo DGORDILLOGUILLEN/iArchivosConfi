@@ -12,7 +12,6 @@
          $this->assertEquals(true, $ini->readValue("booleano"));
          $this->assertEquals(123, $ini->readValue("numero"));
          $this->assertEquals("Juan", $ini->readValue("string"));
-         //Esta accediendo a elementos del array que no existen
          return $ini;
      }
      /**
