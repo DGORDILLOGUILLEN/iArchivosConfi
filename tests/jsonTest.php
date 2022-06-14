@@ -6,7 +6,35 @@ use PHPUnit\Framework\TestCase;
 
 class jsonTest extends TestCase{
 
-
+    public function testJson(){
+        $json = new json("tests/ejemplo.json");
+        $json->openFile("ejemplo.json");
+        
+        $this->assertEquals(["Jose","Juan","Daniel"], $json->readValue("array"));
+        $this->assertEquals(24, $json->readValue("numero"));
+        $this->assertEquals(false, $json->readValue("booleano"));
+        //Esta accediendo a elementos del array que no existen
+        return $json;
+    }
+    /*
+    * @depends testjson
+    */
+    public function testModifyValue(){
+        $json = new json("tests/ejemplo.json");
+        $json->modifyValue("array", "Jose");
+        $this->assertEquals("Jose",$json->readValue("array"));
+    }
+    /*
+    * @depends testModifyValue
+    */
+    public function testRemoveValue(){
+        $json = new json("tests/ejemplo.json");
+        $json->openFile("tests/ejemplo.json");
+        $json->removeValue("array");
+        $this->assertNull($json->readValue("array"));
+    }
+  
+    
 }
 
 

@@ -33,7 +33,9 @@ class yml extends archivo implements iArchivosConfig {
         $this->addValue($name, $value);
     }
 
-    public function readValue(string $name):string{
+    public function readValue(string $name):string|null|array|float|bool|int{
+        if (!array_key_exists($name, $this->parsed))
+            return null;
         return $name==" "?" ":$this->parsed[$name];
     }
 

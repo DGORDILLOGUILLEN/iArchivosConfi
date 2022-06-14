@@ -62,8 +62,10 @@ class csvClass extends archivo implements iArchivosConfig {
      *
      * @return boolean
      */
-    public function readValue(string $name):string{
-        return $name==" "?" ":$this->parsed[$value];
+    public function readValue(string $name):string|null|array|float|bool|int{
+        if (!array_key_exists($name, $this->parsed))
+            return null;
+        return $name==" "?" ":$this->parsed[$name];
     }
 
     public function array2csv():string{

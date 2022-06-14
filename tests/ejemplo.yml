@@ -3,4 +3,4 @@ array:
     - 2
     - true
 numero: 240
-booleano: False
+booleano: false

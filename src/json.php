@@ -46,9 +46,9 @@ class json extends archivo implements iArchivosConfig {
      * @param array $parsed
      * @return boolean
      */
-    public function removeValue(string $name, $value){
+    public function removeValue(string $name){
         if (array_key_exists($name, $this->parsed)) { 
-            unset($this->parsed[$value]);
+            unset($this->parsed[$name]);
         }
     }
 
@@ -71,8 +71,10 @@ class json extends archivo implements iArchivosConfig {
      *
      * @return boolean
      */
-    public function readValue(string $name):string{
-        return $name==" "?" ":$this->parsed[$value];
+    public function readValue(string $name):string|null|array|float|bool|int{
+        if (!array_key_exists($name, $this->parsed))
+            return null;
+        return $name==" "?" ":$this->parsed[$name];
     }
   
 }
